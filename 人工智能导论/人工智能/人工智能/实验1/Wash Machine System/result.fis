@@ -1,0 +1,49 @@
+[System]
+Name='result'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='dust'
+Range=[0 100]
+NumMFs=3
+MF1='SD':'trimf',[-40 0 40]
+MF2='MD':'trimf',[10 50 90]
+MF3='LD':'trimf',[60 100 140]
+
+[Input2]
+Name='gas'
+Range=[0 100]
+NumMFs=3
+MF1='NG':'trimf',[-40 0 40]
+MF2='MG':'trimf',[10 50 90]
+MF3='LG':'trimf',[60 100 140]
+
+[Output1]
+Name='washtime'
+Range=[0 120]
+NumMFs=5
+MF1='VS':'trimf',[-30 0 30]
+MF2='S':'trimf',[0 30 60]
+MF3='M':'trimf',[30 60 90]
+MF4='L':'trimf',[60 90 120]
+MF5='VL':'trimf',[90 120 150]
+
+[Rules]
+3 3, 5 (1) : 1
+2 2, 3 (1) : 1
+1 1, 1 (1) : 1
+1 2, 3 (1) : 1
+1 3, 4 (1) : 1
+2 1, 2 (1) : 1
+2 3, 4 (1) : 1
+3 1, 3 (1) : 1
+3 2, 4 (1) : 1
